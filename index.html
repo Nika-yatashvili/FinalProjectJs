@@ -9,19 +9,22 @@
 </head>
 
 <body>
-    
-        <img class="backgound" src="images/clouds 4k.avif" alt="background">
-
-        <section class="formSection">
-
-            <form action="submit">
-
-                <input class="input" type="search">
-                <button type="submit" class="searchButton">search</button>
-
+    <main>
+        <div class="sidebar">
+            <img src="./images/profile-avatar.jpg" alt="avatar" class="profileAvatar">
+            <p id="userName">User</p>
+            <button id="loginBtn">Login</button>
+        </div>
+        <div id="mainSection">
+            <form id="searchForm" action="submit">
+                <input type="search" class="searchInput" placeholder="Search here...">
+                <button class="searchBtn" type="submit">Search</button>
             </form>
-        </section>
-    
+            <div id="newsContainer">
+
+            </div>
+        </div>
+    </main>
     <script src="index.js"></script>
 </body>
 
