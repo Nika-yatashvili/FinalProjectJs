@@ -82,18 +82,18 @@ main {
     gap: 0.5rem;
 }
 
-.searchInput {
+input {
     border-radius: 8px;
     border: 1px solid #dbdbdb;
     padding: 6px 10px;
 }
 
-.searchInput:active,
-.searchInput:focus {
+input:active,
+input:focus {
     outline: none;
 }
 
-.searchBtn {
+button {
     border-radius: 8px;
     border: 1px solid #dbdbdb;
     padding: 6px 10px;
@@ -101,7 +101,7 @@ main {
     transition: 0.1s all ease-in-out;
 }
 
-.searchBtn:hover {
+button:hover {
     background-color: #f5f5f5;
 }
 

@@ -1,9 +1,10 @@
-let isUserLoggedIn = false;
+let isUserLoggedIn = true;
 let username = "";
 const signInForm = document.querySelector('#signInForm');
 const logOut = document.querySelector(".logOut")
 const usernameParagraph = document.querySelector('#userName');
 const newsDiv = document.querySelector("#newsContainer");
+const searchForm = document.querySelector("#searchForm");
 
 function renderEmpty() {
     const div = document.createElement("div");
@@ -55,7 +56,6 @@ signInForm.addEventListener("submit", (e) => {
 
 
 const apiKey = 'f1330f15f7d847f995a127c0f8edca11';
-const searchQuery = "tesla";
 
 const currentPage = 1;
 const pageSize = 10;
@@ -77,7 +77,7 @@ function createNewsDiv(news) {
     return div;
 }
 
-function fetchNews() {
+function fetchNews(searchQuery = 'tesla') {
     fetch(`https://newsapi.org/v2/everything?q=${searchQuery}&sortBy=publishedAt&pageSize=${pageSize}&page=${currentPage}&apiKey=${apiKey}`)
         .then(
             (response) => response.json()
@@ -92,3 +92,16 @@ function renderNews(news) {
         newsDiv.appendChild(createNewsDiv(news));
     });
 }
+
+// todo: remove this if statement after finishing this project
+if (isUserLoggedIn) {
+    fetchNews()
+}
+
+
+searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const searchInputValue = document.querySelector(".searchInput").value;
+    newsDiv.innerHTML = ""
+    fetchNews(searchInputValue)
+})
