@@ -12,8 +12,13 @@
     <main>
         <div class="sidebar">
             <img src="./images/profile-avatar.jpg" alt="avatar" class="profileAvatar">
-            <p id="userName">User</p>
-            <button id="loginBtn">Login</button>
+            <p id="userName"></p>
+            <form type="submit" id="signInForm">
+                <input type="text" name="username" id="usernameId" placeholder="Username">
+                <button id="loginBtn" type="submit">Login</button>
+            </form>
+
+            <button class="logOut">Logout</button>
         </div>
         <div id="mainSection">
             <form id="searchForm" action="submit">
