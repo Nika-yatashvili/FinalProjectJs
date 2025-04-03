@@ -1,10 +1,27 @@
 let isUserLoggedIn = true;
 let username = "";
+const hasDarkMode = JSON.parse(localStorage.getItem('darkMode')) || false;
 const signInForm = document.querySelector('#signInForm');
 const logOut = document.querySelector(".logOut")
 const usernameParagraph = document.querySelector('#userName');
 const newsDiv = document.querySelector("#newsContainer");
 const searchForm = document.querySelector("#searchForm");
+const toggle = document.querySelector('#toggle');
+
+toggle.checked = hasDarkMode;
+
+function toggleDarkMode(isDark) {
+    const body = document.querySelector('#body')
+
+    if (isDark) {
+        body.classList.add("dark")
+    } else {
+        body.classList.remove("dark")
+    }
+}
+
+toggleDarkMode(toggle.checked)
+
 
 function renderEmpty() {
     const div = document.createElement("div");
@@ -98,10 +115,15 @@ if (isUserLoggedIn) {
     fetchNews()
 }
 
-
 searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const searchInputValue = document.querySelector(".searchInput").value;
     newsDiv.innerHTML = ""
     fetchNews(searchInputValue)
+})
+
+toggle.addEventListener("change", (e) => {
+    e.preventDefault();
+    localStorage.setItem('darkMode', toggle.checked)
+    toggleDarkMode(toggle.checked)
 })

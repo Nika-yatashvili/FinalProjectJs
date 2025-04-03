@@ -117,3 +117,17 @@ button:hover {
     font-size: 3rem;
     color: bisque;
 }
+
+.dark>* {
+    background-color: rgb(29, 29, 29);
+    color: #dbdbdb;
+}
+
+.dark .articleContainer:hover {
+    background-color: dimgray;
+}
+
+.dark #author,
+.dark #publishedAt {
+    color: aliceblue;
+}

@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Weather App</title>
+    <link rel="stylesheet" href="css/toggle.css">
+    <title>News App</title>
 </head>
 
-<body>
+<body id="body">
     <main>
         <div class="sidebar">
-            <img src="./images/profile-avatar.jpg" alt="avatar" class="profileAvatar">
+            <img src="./images/profile-avatar.png" alt="avatar" class="profileAvatar">
             <p id="userName"></p>
+            <input id="toggle" class="toggle" type="checkbox">
+            <div class="background"></div>
             <form type="submit" id="signInForm">
                 <input type="text" name="username" id="usernameId" placeholder="Username">
                 <button id="loginBtn" type="submit">Login</button>
