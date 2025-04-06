@@ -1,4 +1,4 @@
-import { toggleDarkMode, renderEmpty, createNewsDiv, setCookie, getCookie, deleteCookie } from './utils.js';
+import { toggleDarkMode, renderEmpty, createNewsDiv, setCookie, getCookie, deleteCookie, setSearchQuery, getSearchQuery } from './utils.js';
 
 const apiKey = 'f1330f15f7d847f995a127c0f8edca11';
 
@@ -6,9 +6,7 @@ let page = 1;
 const perPage = 11;
 
 let isUserLoggedIn = false;
-// let username = sessionStorage.getItem("username") || "";
 let username = getCookie("username") || "";
-
 
 const hasDarkMode = JSON.parse(localStorage.getItem('darkMode')) || false;
 const signInForm = document.querySelector('#signInForm');
@@ -19,7 +17,8 @@ const searchForm = document.querySelector("#searchForm");
 const toggle = document.querySelector('#toggle');
 const loadMoreButton = document.querySelector("#load-more-products");
 
-let searchQuery = 'tesla'
+const searchQuery = getSearchQuery() || 'tesla'
+searchForm.search.value = getSearchQuery()
 
 toggle.checked = hasDarkMode;
 
@@ -99,20 +98,14 @@ function renderNews(news) {
     });
 }
 
-// // todo: remove this if statement after finishing this project
-// if (isUserLoggedIn) {
-//     fetchNews(`https://newsapi.org/v2/everything?q=${searchQuery}&sortBy=publishedAt&pageSize=${perPage}&page=${page}&apiKey=${apiKey}`)
-// }
-
-
 function searchNews() {
     page = 1;
     const trimmedSearchValue = searchForm.search.value.trim();
 
     if (trimmedSearchValue.length === 0) {
-        searchQuery = 'tesla';
+        setSearchQuery("tesla")
     } else {
-        searchQuery = trimmedSearchValue;
+        setSearchQuery(trimmedSearchValue)
     }
 
     fetchNews(`https://newsapi.org/v2/everything?q=${trimmedSearchValue.length === 0 ? 'tesla' : trimmedSearchValue}&sortBy=publishedAt&pageSize=${perPage}&page=${page}&apiKey=${apiKey}`)

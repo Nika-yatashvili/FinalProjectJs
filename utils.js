@@ -56,3 +56,11 @@ export function getCookie(cname) {
 export function deleteCookie(cname) {
     document.cookie = `${cname}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC`;
 }
+
+export function setSearchQuery(sname) {
+    sessionStorage.setItem("searchQuery", sname)
+}
+
+export function getSearchQuery() {
+    return sessionStorage.getItem("searchQuery")
+}
